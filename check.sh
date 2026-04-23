@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#This Script checks the system health
 DISK=$(df -h / | grep / | awk '{print $5}' | cut -d% -f1)
 
 echo "Checking Disk Usage..."
