@@ -25,3 +25,4 @@ A Bash script that analyzes multiple log files and counts ERROR and WARNING entr
 ```bash
 chmod +x log-analyzer/project.sh
 ./log-analyzer/project.sh log-analyzer/logs/
+Testing Jenkins Automation
