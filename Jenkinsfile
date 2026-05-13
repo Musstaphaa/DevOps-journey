@@ -1,15 +1,24 @@
 pipeline {
     agent any 
-
+    
     stages {
-        stage('Build') { 
+        stage('Checkout') {
             steps {
-                echo '🚀 MAGIC TIME: Code pulled automatically from GitHub!'
+                echo '📥 Pulling Code from GitHub...'
+                checkout scm
             }
         }
-        stage('Test') { 
+        stage('Build Docker Image') { 
             steps {
-                echo '✅ Automated Testing Passed!'
+                echo '🏗️ Building the Docker Image...'
+                // 
+                sh 'echo "Simulating: docker build -t my-app ."'
+            }
+        }
+        stage('Test Image') { 
+            steps {
+                echo '✅ Testing the newly built Image...'
+                sh 'echo "Simulating: docker run my-app test"'
             }
         }
     }
