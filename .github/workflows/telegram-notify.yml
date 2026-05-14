@@ -1,0 +1,35 @@
+Name: Telegram Notification Pipeline
+
+# The pipeline will start automatically as soon as you push:
+
+  on: [push]
+
+  jobs:
+
+    notify:
+
+      runs-on: ubuntu-latest
+
+      steps:
+
+        - Name: Send Telegram Alert
+
+# This is the name of the ready-made action we imported from the Marketplace.
+
+          uses: appleboy/telegram-action@master
+
+           with:
+
+            to: ${{ secrets.TELEGRAM_TO }}
+
+            token: ${{ secrets.TELEGRAM_TOKEN }}
+
+            message: |
+
+            🚀 New update, everyone!
+
+            The pipeline has been successfully activated.
+
+            📦 Project: ${{ github.repository }}
+
+            👤 By: ${{ github.actor }}
