@@ -1,0 +1,8 @@
+---
+- name: My First System Admin Playbook
+  hosts: all
+  tasks:
+    - name: Remove the testing directory completely
+      file:
+        path: ~/ansible_test_dir
+        state: absent

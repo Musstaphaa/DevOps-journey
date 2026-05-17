@@ -1,0 +1,35 @@
+---
+- name: Install and Configure Nginx Web Server
+  hosts: all
+  become: yes # This means we're telling Ansible to use (sudo) because installing programs requires privileges.
+  
+# Here we define "variables" so that if we want to change the text later, we can change it from here only.
+  vars:
+    page_title: "Welcome to Mostafa's Automated Server"
+    page_body: "This Nginx server was configured entirely by Ansible!"
+
+  tasks:
+    - name: Ensure Nginx is installed and up to date
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes # This is equivalent to the (apt update) command
+
+    - name: Create a custom index.html page
+      copy:
+        dest: /var/www/html/index.html
+        # Here we call up the variables we wrote above between these brackets {{ }}
+        content: |
+          <html>
+          <head><title>{{ page_title }}</title></head>
+          <body>
+          <h1>{{ page_title }}</h1>
+          <p>{{ page_body }}</p>
+          </body>
+          </html>
+
+    - name: Ensure Nginx is running and enabled on boot
+      service:
+        name: nginx
+        state: started
+        enabled: yes # This is equivalent to the (systemctl enable) command so that it works when the device is turned on.
