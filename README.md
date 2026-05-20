@@ -1,86 +1,54 @@
- Hi, I'm Mostafa Mohamed Ahmed 👋
+# Nano-Banana DevOps Journey 🚀
 
-**Systems Administrator → DevOps Engineer** · Cairo, Egypt
-
-> "3 years keeping systems running taught me what breaks and why.
-> Now I'm building the automation layer that prevents it from happening at all."
-
-![Open to work](https://img.shields.io/badge/Open%20to-DevOps%20Roles-238636?style=flat-square)
-![Egypt](https://img.shields.io/badge/Location-Cairo%2C%20Egypt-0969da?style=flat-square)
-![Remote](https://img.shields.io/badge/Remote-Friendly-8957e5?style=flat-square)
+A comprehensive End-to-End DevOps project taking a Python web application from local development to a highly available AWS EKS cluster, using Docker, Terraform, and Kubernetes.
 
 ---
 
-## 🧑‍💻 About me
+## Phase 1: Containerization (Docker)
 
-- 🖥️ **3+ years** as a Windows + Linux Systems Administrator
-- ⚙️ Hands-on with **VMware & KVM** virtualisation in production
-- 🚀 Currently on **Month 4 of a 6-month structured DevOps roadmap**
-- 📚 Building every skill into a real GitHub project — no tutorial repos
-- 🎯 Next goal: **Prometheus + Grafana** monitoring + AWS Cloud Practitioner cert
-- 📍 Cairo, Egypt — open to local and remote roles
+**Objective:** Containerize the Python web application and prepare the local development environment.
 
----
+### What I Did:
+* Wrote a `Dockerfile` to package the Python application with its required dependencies safely.
+* Created a `docker-compose.yml` file to orchestrate and run both the web application and a PostgreSQL database simultaneously.
+* Successfully tested the application locally to ensure seamless communication between the app container and the database container.
 
-## 🛠️ Tech stack
-
-**Production-ready**
-
-![Linux](https://img.shields.io/badge/Linux-RHEL%20%7C%20Ubuntu-FCC624?style=flat-square&logo=linux&logoColor=black)
-![Windows Server](https://img.shields.io/badge/Windows_Server-0078D6?style=flat-square&logo=windows&logoColor=white)
-![VMware](https://img.shields.io/badge/VMware-607078?style=flat-square&logo=vmware&logoColor=white)
-![Bash](https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logo=gnubash&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
-![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white)
-
-**Actively building**
-
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonwebservices&logoColor=white)
-![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=flat-square&logo=terraform&logoColor=white)
-![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=flat-square&logo=jenkins&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-
-**Coming next**
-
-![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
-![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white)
-![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white)
-![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=flat-square&logo=ansible&logoColor=white)
+**Proof of Execution:**
+![App Running Locally](images/Live-local-app.png)
 
 ---
 
-## 📁 Projects
+## Phase 2: Infrastructure as Code (Terraform & AWS EKS)
 
-| # | Project | Stack | Status |
-|---|---------|-------|--------|
-| 01 | [Linux & Bash automation — log analyser](https://github.com/Musstaphaa/DevOps-journey/tree/main/01-Linux-Bash-Scripting) | Shell · Bash · Cron | ✅ Done |
-| 02 | [Docker multi-tier app — Nginx + app + PostgreSQL](https://github.com/Musstaphaa/DevOps-journey/tree/main/02-Docker-Containers) | Docker · Compose · Nginx | ✅ Done |
-| 03 | [AWS + Terraform — VPC, EC2, S3 provisioning](https://github.com/Musstaphaa/DevOps-journey/tree/main/03-AWS-Terraform-Basics) | Terraform · AWS · HCL | ✅ Done |
-| 04 | [Jenkins CI/CD pipeline](https://github.com/Musstaphaa/DevOps-journey/tree/main/04-CI-CD-Jenkins) | Jenkins · Docker · Groovy | 🔄 In progress |
-| 05 | Kubernetes + Helm deployment | K8s · Helm · YAML | 🔜 Month 5 |
-| 06 | Prometheus + Grafana monitoring stack | Prometheus · Grafana · ELK | 🔜 Month 6 |
+**Objective:** Automate the provisioning of a robust and scalable cloud infrastructure on AWS to host the application.
 
----
+### What I Did:
+* Used **Terraform** to write modular infrastructure code (`main.tf`, `variables.tf`, `outputs.tf`).
+* Provisioned a custom AWS Virtual Private Cloud (VPC), Subnets, and an Elastic Kubernetes Service (**EKS**) cluster.
+* Successfully deployed AWS resources and connected the local `kubectl` to the new cluster.
 
-## 📈 Roadmap progress
-
-```
-Month 1-2  Linux · Git · Bash · Python · Networking    ✅ Complete
-Month 3    Docker · Compose · Container security        ✅ Complete  
-Month 4    AWS · Terraform · CI/CD (Jenkins)            🔄 In progress
-Month 5    Kubernetes · GitHub Actions · Ansible        🔜 Next
-Month 6    Prometheus · Grafana · Final project         🔜 Next
-```
+**Proof of Execution:**
+![Terraform Success & EKS Nodes](images/terraform-applying-kubernetes-over-aws-succ.png)
 
 ---
 
-## 📬 Connect
+## Phase 3: Production Deployment with Kubernetes (AWS EKS)
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/mostafa-muhamed)
-[![Email](https://img.shields.io/badge/Email-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:musstafa.muhammed@gmail.com)
-[![Location](https://img.shields.io/badge/Cairo-Egypt-red?style=flat-square)]()
+**Objective:** Deploying the fully-dockered Nano-Banana application and PostgreSQL database on a live AWS EKS cluster with high availability and external access.
 
----
+### What I Did:
+* Pushed the containerized application to **Docker Hub** to be pulled by the EKS nodes.
+* Configured Kubernetes Manifests (`Deployments` & `Services`) for both the web app and the database.
+* Handled sensitive database credentials securely using **Environment Variables**.
+* Exposed the web application to the public internet using an AWS Elastic Load Balancer (ELB).
 
-*Building in public — every week something new gets committed.*
+### Proof of Execution:
+
+**1. Application Image Pushed to Docker Hub:**
+![Docker Hub Artifact](images/Dockerhub-app.png)
+
+**2. Deploying Manifests to Kubernetes:**
+![Applying Manifests](images/project-kubernetes-from-dockerhub.png)
+
+**3. Application Live on AWS ELB connecting to Database:**
+*(Check the live AWS `.amazonaws.com` URL in the previously uploaded screenshot)*
