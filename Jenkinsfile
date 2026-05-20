@@ -16,7 +16,7 @@ pipeline {
         
         stage('Build Docker Image') {
             steps {
-                dir('08-Final-Project/app') {
+                dir('08-Final-Project') { // <--- التعديل هنا (شيلنا /app)
                     sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
                 }
             }
