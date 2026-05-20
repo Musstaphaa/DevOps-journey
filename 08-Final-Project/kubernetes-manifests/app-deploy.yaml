@@ -1,10 +1,10 @@
-# Part One: We tell him to run two versions of our application
+# Part One: We tell him to run one version of our application (to avoid Node limits)
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nanobanana-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: nanobanana
@@ -15,10 +15,19 @@ spec:
     spec:
       containers:
       - name: app-container
-        #هWe will put the name of the carton we just uploaded
+        # jenkins will edit this line in the new version
         image: musstapha1/nanobanana-app:v1.0
         ports:
         - containerPort: 5000
+        env:
+        - name: DB_HOST
+          value: "postgres-service" # service name inside the kubernetes
+        - name: DB_USER
+          value: "postgres"
+        - name: DB_PASSWORD
+          value: "postgres"
+        - name: DB_NAME
+          value: "postgres"
 
 ---
 # Part Two: We say we created a portal (Load Balancer) to access the Internet
