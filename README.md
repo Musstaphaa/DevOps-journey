@@ -69,7 +69,7 @@ Nano-Banana/
 
 ### Result
 
-![App Running Locally](images/Live-local-app.png))
+<img src="./images/Live-local-app.png" alt="App Running Locally" width="800">
 
 *Flask app running locally, connected to PostgreSQL — both containers healthy*
 
