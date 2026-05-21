@@ -135,6 +135,12 @@ Every resource is version-controlled. A teammate can clone the repo and run `ter
 - Jenkins pulls from GitHub automatically, builds the Docker image, and pushes it to DockerHub using securely stored credentials
 - The final stage sends `kubectl` commands directly to the EKS cluster to roll out the new image — no SSH, no manual steps
 
+### Result
+
+<img src="./images/jenkins-Successfully-pipeline.png" alt="Jenkins pipeline success" width="800">
+
+*All stages green — Checkout From GitHub → Build → Push → Deploy*
+
 ### Real challenge I solved — Docker-out-of-Docker (DooD) 🔧
 
 Running `docker build` inside a Jenkins container requires the container to communicate with the host's Docker socket. This caused a socket permission error that stopped the pipeline.
