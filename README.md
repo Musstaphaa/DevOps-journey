@@ -68,7 +68,8 @@ Nano-Banana/
 
 ### Result
 
-![App Running Locally](images/Live-local-app.png)
+![App Running Locally](./images/Live-local-app.png)
+
 *Flask app running locally, connected to PostgreSQL — both containers healthy*
 
 ---
@@ -115,6 +116,8 @@ Every resource is version-controlled. A teammate can clone the repo and run `ter
 
 **3 — Application live on public AWS ELB URL, connected to PostgreSQL ✅**
 
+![Manifests Applied](images/project-kubernetes-from-dockerhub.png)
+
 ---
 
 ## Phase 4 — CI/CD Automation with Jenkins ⚙️
@@ -133,8 +136,8 @@ Running `docker build` inside a Jenkins container requires the container to comm
 
 ### Result
 
-![Jenkins Pipeline Success](images/jenkins-pipeline-success.png)
-*All stages green — Checkout → Test → Build → Push → Deploy*
+![Jenkins Pipeline Success](images/jenkins-Successfully-pipeline.png)
+*All stages green — Checkout From Github → Build → Push → Deploy*
 
 ---
 
