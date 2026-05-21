@@ -139,8 +139,7 @@ Every resource is version-controlled. A teammate can clone the repo and run `ter
 
 Running `docker build` inside a Jenkins container requires the container to communicate with the host's Docker socket. This caused a socket permission error that stopped the pipeline.
 
-<img src="./jenkins-Successfully-pipeline.png" alt="Jenkins Docker socket permission error" width="800">
-
+<img src="./images/jenkins-Successfully-pipeline.png" alt="Jenkins pipeline success" width="800">
 **Fix:** Mounted the host Docker socket into the Jenkins container and added the Jenkins user to the `docker` group — pipeline can now build and push images without running as root or installing Docker inside Docker.
 
 ---
