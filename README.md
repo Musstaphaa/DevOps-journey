@@ -30,6 +30,7 @@
                     │  Grafana    │◄──── Real-time metrics
                     ──────────────────────────────────────
 ```
+<<<<<<< HEAD
 
 ---
 
@@ -68,7 +69,7 @@ Nano-Banana/
 
 ### Result
 
-![App Running Locally](~/DevOps-journey/Final-Projectimages/Live-local-app.png)
+![App Running Locally](images/Live-local-app.png))
 
 *Flask app running locally, connected to PostgreSQL — both containers healthy*
 
@@ -110,14 +111,98 @@ Every resource is version-controlled. A teammate can clone the repo and run `ter
 
 ![DockerHub](images/Dockerhub-app.png)
 
+=======
+
+---
+
+## 📁 Project Structure
+
+```
+Nano-Banana/
+├── app/                    # Flask application
+│   ├── app.py
+│   └── requirements.txt
+├── Dockerfile              # Container definition
+├── docker-compose.yml      # Local dev environment
+├── Jenkinsfile             # CI/CD pipeline as code
+├── terraform/              # AWS infrastructure (VPC + EKS)
+│   ├── main.tf
+│   ├── variables.tf
+│   └── outputs.tf
+├── k8s/                    # Kubernetes manifests
+│   ├── flask-deployment.yaml
+│   ├── postgres-deployment.yaml
+│   └── flask-service.yaml
+├── monitoring/             # Helm values for Prometheus stack
+└── images/                 # Proof of execution screenshots
+```
+
+---
+
+## Phase 1 — Containerisation 🐳
+
+> **Goal:** Package the app and its database into containers and confirm they talk to each other locally before touching any cloud infrastructure.
+
+### What I built
+- A `Dockerfile` that packages the Python Flask app with all its dependencies in a reproducible, portable image
+- A `docker-compose.yml` that spins up both the **web app** and **PostgreSQL** as separate containers on a shared network — one command starts the entire local stack
+- Verified the full flow locally: app starts, connects to the database, reads and writes data correctly
+
+### Result
+
+![App Running Locally](images/Live-local-app.png)
+*Flask app running locally, connected to PostgreSQL — both containers healthy*
+
+---
+
+## Phase 2 — Infrastructure as Code ☁️
+
+> **Goal:** Stop clicking in the AWS console. Provision the entire cloud environment automatically with a single `terraform apply`.
+
+### What I built
+- Modular Terraform code split across `main.tf`, `variables.tf`, and `outputs.tf` — clean, readable, reusable
+- A custom **AWS VPC** with public and private subnets across multiple availability zones
+- A fully managed **AWS EKS cluster** with worker nodes — AWS handles the control plane, I manage the workloads
+- Connected local `kubectl` to the live cluster and confirmed nodes were `Ready`
+
+### Why Terraform over clicking in the console
+Every resource is version-controlled. A teammate can clone the repo and run `terraform apply` to get an identical environment in minutes. `terraform destroy` tears everything down cleanly — no forgotten resources racking up charges.
+
+### Result
+
+![Terraform & EKS Nodes](images/terraform-applying-kubernetes-over-aws-succ.png)
+*Terraform apply completing successfully — EKS nodes showing Ready status in kubectl*
+
+---
+
+## Phase 3 — Production Deployment on Kubernetes 🚀
+
+> **Goal:** Deploy the app and database to the live EKS cluster — externally accessible, data-persistent, and credentials secured.
+
+### What I built
+- Pushed the Docker image to **DockerHub** so EKS worker nodes can pull it from anywhere
+- Wrote Kubernetes `Deployment` and `Service` manifests for both the Flask app and PostgreSQL
+- Secured database credentials using **Environment Variables** injected at runtime — the password never appears in any file committed to Git
+- Exposed the application to the internet via an **AWS Elastic Load Balancer (ELB)** — Kubernetes provisions it automatically when the Service type is `LoadBalancer`
+
+### Result
+
+**1 — Image on DockerHub, ready to be pulled by EKS:**
+
+![DockerHub](images/Dockerhub-app.png)
+
+>>>>>>> 3b9eb2e21e0801eb0528e2c22824a95152bcbfae
 **2 — Manifests applied to the live cluster:**
 
 ![Manifests Applied](images/project-kubernetes-from-dockerhub.png)
 
 **3 — Application live on public AWS ELB URL, connected to PostgreSQL ✅**
 
+<<<<<<< HEAD
 ![Manifests Applied](images/project-kubernetes-from-dockerhub.png)
 
+=======
+>>>>>>> 3b9eb2e21e0801eb0528e2c22824a95152bcbfae
 ---
 
 ## Phase 4 — CI/CD Automation with Jenkins ⚙️
@@ -136,8 +221,13 @@ Running `docker build` inside a Jenkins container requires the container to comm
 
 ### Result
 
+<<<<<<< HEAD
 ![Jenkins Pipeline Success](images/jenkins-Successfully-pipeline.png)
 *All stages green — Checkout From Github → Build → Push → Deploy*
+=======
+![Jenkins Pipeline Success](images/jenkins-pipeline-success.png)
+*All stages green — Checkout → Test → Build → Push → Deploy*
+>>>>>>> 3b9eb2e21e0801eb0528e2c22824a95152bcbfae
 
 ---
 
