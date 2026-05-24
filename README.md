@@ -164,7 +164,7 @@ Running `docker build` inside a Jenkins container requires the container to comm
 
 The `kube-prometheus-stack` requires more memory than very small free-tier nodes can comfortably provide. On `t3.micro` nodes, monitoring pods stayed in `Pending` state because the cluster did not have enough memory and available ENI capacity.
 
-**Diagnosis:** `kubectl describe pod <prometheus-pod>` showed `Insufficient memory` in the Events section, confirming this was a capacity issue rather than a Kubernetes manifest error.
+**Diagnosis:** `kubectl describe pod nanobanana ` showed `Insufficient memory` in the Events section, confirming this was a capacity issue rather than a Kubernetes manifest error.
 
 **Fix:** Upgraded the node group to `t3.medium` instances. During constrained testing, I also changed the application deployment strategy from `RollingUpdate` to `Recreate` to avoid running old and new pods at the same time.
 
